@@ -7,7 +7,7 @@
 
 body.light header {
   transition: all 0.3s ease;
-  background-image: url("/todo/static/images/bg-mobile-light.jpg");
+  background-image: url("/static/images/bg-mobile-light.jpg");
 }
 body.light .hero__title {
   transition: all 0.3s ease;
@@ -71,7 +71,7 @@ body.light .attribution {
 }
 body.dark header {
   transition: all 0.3s ease;
-  background-image: url("/todo/static/images/bg-mobile-dark.jpg");
+  background-image: url("/static/images/bg-mobile-dark.jpg");
 }
 body.dark .hero__title {
   transition: all 0.3s ease;
@@ -221,7 +221,7 @@ main {
 .todo__check:checked + .todo__check--ds::after {
   content: "";
   margin: 3px;
-  background-image: url("/todo/static/images/icon-check.svg");
+  background-image: url("/static/images/icon-check.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -314,10 +314,10 @@ main {
 
 @media only screen and (min-width: 960px) {
   body.light header {
-    background-image: url("/todo/static/images/bg-desktop-light.jpg");
+    background-image: url("/static/images/bg-desktop-light.jpg");
   }
   body.dark header {
-    background-image: url("/todo/static/images/bg-desktop-dark.jpg");
+    background-image: url("/static/images/bg-desktop-dark.jpg");
   }
 
   .todo {
