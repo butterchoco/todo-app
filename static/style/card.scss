@@ -34,7 +34,7 @@ body {
   &.light {
     header {
       transition: all 0.3s ease;
-      background-image: url("/todo/images/bg-mobile-light.jpg");
+      background-image: url("/todo/static/images/bg-mobile-light.jpg");
     }
 
     .hero {
@@ -126,7 +126,7 @@ body {
   &.dark {
     header {
       transition: all 0.3s ease;
-      background-image: url("/todo/images/bg-mobile-dark.jpg");
+      background-image: url("/todo/static/images/bg-mobile-dark.jpg");
     }
 
     .hero {
@@ -318,7 +318,7 @@ main {
       &::after {
         content: "";
         margin: 3px;
-        background-image: url("/todo/images/icon-check.svg");
+        background-image: url("/todo/static/images/icon-check.svg");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -429,12 +429,12 @@ main {
   body {
     &.light {
       header {
-        background-image: url("/todo/images/bg-desktop-light.jpg");
+        background-image: url("/todo/static/images/bg-desktop-light.jpg");
       }
     }
     &.dark {
       header {
-        background-image: url("/todo/images/bg-desktop-dark.jpg");
+        background-image: url("/todo/static/images/bg-desktop-dark.jpg");
       }
     }
   }
