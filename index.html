@@ -1,190 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <title>Frontend Mentor | Todo app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/todo/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Todo app</title>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style/card.css">
-  
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body class="light">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/todo/style/card.css" />
 
-  <header>
-    <div class="hero">
-      <h2 class="hero__title">TODO</h2>
-      <img id="hero-mode" class="hero__mode" src="images/icon-moon.svg" alt="design mode"/>
-    </div>
-  </header>
-
-  <main>
-    <div class="todo">
-      <div class="todo__field">
-        <input id="todo-add-check" type="checkbox" name="todo-add-check" class="todo__check"/>
-        <label for="todo-add-check" class="todo__check--ds"></label>
-        
-        <input placeholder="Create a new todo..." type="text" id="todo-add" name="todo-add" class="todo__add" aria-label="Todo Add Input"/>
-      </div>
-      <div class="todo__list">
-        <p class="todo__list__empty">No item here</p>
-        <div class="todo__list__wrapper"></div>
-        <div class="todo__footer">
-          <p class="todo__remaining"><span></span> item left</p>
-          <p onclick="clearAll()" class="todo__clear--all">Clear Completed</p>
-        </div>
-      </div>
-      <div class="todo__navigation">
-        <div class="todo__footer">
-          <p class="todo__remaining"><span></span> item left</p>
-        </div>
-        <div class="navigation">
-          <div class="navigation__tabs active">All</div>
-          <div class="navigation__tabs">Active</div>
-          <div class="navigation__tabs">Completed</div>
-        </div>
-        <div class="todo__footer">
-          <p onclick="clearAll()" class="todo__clear--all">Clear Completed</p>
-        </div>
-      </div>
-
-      <p class="todo__helper">Drag and drop to reorder list</p>
-      <div class="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-        Coded by <a href="https://github.com/butterchoco">Ahmad Supriyanto</a>.
-      </div>
-    </div>
-  </main>
-
-  <script>
-    var mode = "light"
-    const modeBtn = document.getElementById("hero-mode");
-    modeBtn.addEventListener("click", (e) => {
-      if (mode === "light") {
-        e.target.setAttribute("src", "images/icon-sun.svg");
-        document.body.classList.remove("light");
-        document.body.classList.add("dark");
-        mode = "dark";
-      } else {
-        e.target.setAttribute("src", "images/icon-moon.svg");
-        document.body.classList.remove("dark");
-        document.body.classList.add("light");
-        mode = "light";
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
       }
-    })
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="light">
+    <header>
+      <div class="hero">
+        <h2 class="hero__title">TODO</h2>
+        <img
+          id="hero-mode"
+          class="hero__mode"
+          src="/todo/images/icon-moon.svg"
+          alt="design mode"
+        />
+      </div>
+    </header>
 
-    var todoList = [];
-    var stateList = "all";
+    <main>
+      <div class="todo">
+        <div class="todo__field">
+          <input
+            id="todo-add-check"
+            type="checkbox"
+            name="todo-add-check"
+            class="todo__check"
+          />
+          <label for="todo-add-check" class="todo__check--ds"></label>
 
-    document.querySelectorAll(".todo__remaining").forEach((e) => {
-      e.style.display = "none";
-    })
-    document.querySelectorAll(".todo__clear--all").forEach((e) => {
-      e.style.display = "none";
-    })
+          <input
+            placeholder="Create a new todo..."
+            type="text"
+            id="todo-add"
+            name="todo-add"
+            class="todo__add"
+            aria-label="Todo Add Input"
+          />
+        </div>
+        <div class="todo__list">
+          <p class="todo__list__empty">No item here</p>
+          <div class="todo__list__wrapper"></div>
+          <div class="todo__footer">
+            <p class="todo__remaining"><span></span> item left</p>
+            <p onclick="clearAll()" class="todo__clear--all">Clear Completed</p>
+          </div>
+        </div>
+        <div class="todo__navigation">
+          <div class="todo__footer">
+            <p class="todo__remaining"><span></span> item left</p>
+          </div>
+          <div class="navigation">
+            <div class="navigation__tabs active">All</div>
+            <div class="navigation__tabs">Active</div>
+            <div class="navigation__tabs">Completed</div>
+          </div>
+          <div class="todo__footer">
+            <p onclick="clearAll()" class="todo__clear--all">Clear Completed</p>
+          </div>
+        </div>
 
-    document.querySelectorAll(".navigation__tabs").forEach((e) => {
-      e.addEventListener("click", (btn) => {
-        stateList = btn.target.innerText.toLowerCase();
-        document.querySelectorAll(".navigation__tabs").forEach((el) => {
-          el.classList.remove("active")
-        })
-        btn.target.classList.add("active")
-        updateList(stateList);
-      })
-    })
+        <p class="todo__helper">Drag and drop to reorder list</p>
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by
+          <a href="https://github.com/butterchoco">Ahmad Supriyanto</a>.
+        </div>
+      </div>
+    </main>
 
-    function clearAll() {
-      const todoListFilter = todoList.filter(({type}) => type === "completed");
-      todoListFilter.forEach((e) => e.type = "active");
-      updateList(stateList);
-    }
-    
-    const todoAddInput = document.getElementById("todo-add")
-    todoAddInput.addEventListener("keyup", (e) => {
-      if (e.keyCode === 13) {
-        if (e.target.value !== "") {
-          let maxVal = todoList.length + 1;
-          if (todoList.length !== 0) {
-            maxVal = Math.max.apply(Math, todoList.map((data) => {return data.id})) + 1;
-          }
-          todoList.push({
-            id: maxVal,
-            name: e.target.value,
-            type: "active"
-          })
-          updateList(stateList)
-          e.target.value = "";
+    <script>
+      var mode = "light";
+      const modeBtn = document.getElementById("hero-mode");
+      modeBtn.addEventListener("click", (e) => {
+        if (mode === "light") {
+          e.target.setAttribute("src", "images/icon-sun.svg");
+          document.body.classList.remove("light");
+          document.body.classList.add("dark");
+          mode = "dark";
+        } else {
+          e.target.setAttribute("src", "images/icon-moon.svg");
+          document.body.classList.remove("dark");
+          document.body.classList.add("light");
+          mode = "light";
         }
-      }
-    });
-    
-    function deleteListItem(el, elId) {
-      const todoListTemp = todoList.filter(({id}) => id !== elId);
-      todoList = todoListTemp
-      updateList(stateList)
-    }
+      });
 
-    function completeListItem(el, elId) {
-      const todoListTemp = todoList.find(({id}) => id === elId);
-      if (todoListTemp.type === "active") {
-        todoListTemp.type = "completed";
-      } else {
-        todoListTemp.type = "active"
-      }
-      updateList(stateList);
-    }
+      var todoList = [];
+      var stateList = "all";
 
-    function updateList(state) {
-      const list = document.getElementsByClassName("todo__list__wrapper")[0];
-      list.innerHTML = ""
-      if (todoList.length !== 0) {
-        document.querySelectorAll(".todo__clear--all").forEach((e) => {
-          e.style.display = "block";
-        })
-        document.getElementsByClassName("todo__list__empty")[0].style.display = "none"
-        let todoListFilter = todoList;
-        if (stateList !== "all") todoListFilter = todoList.filter(({type}) => type === stateList);
-        document.querySelectorAll(".todo__remaining").forEach((e) => {
-          e.style.display = "block";
-          const filterTemp = todoList.filter(({type}) => type === "active");
-          e.children[0].innerText = filterTemp.length
-        })
-        for (let i = todoListFilter.length-1; i >= 0; i--) {
-          const id = todoListFilter[i].id;
-          const name = todoListFilter[i].name;
-          const type = todoListFilter[i].type;
-          const listItem = document.createElement("div");
-          listItem.classList.add("todo__list__item")
-          listItem.setAttribute("onclick", `completeListItem(this, ${id})`)
-          listItem.innerHTML = `
-          <input ${type === "completed" ? "checked": ""} id="todo-list-check-${id}" type="checkbox" name="todo-list-check-${id}" class="todo__check"/>
+      document.querySelectorAll(".todo__remaining").forEach((e) => {
+        e.style.display = "none";
+      });
+      document.querySelectorAll(".todo__clear--all").forEach((e) => {
+        e.style.display = "none";
+      });
+
+      document.querySelectorAll(".navigation__tabs").forEach((e) => {
+        e.addEventListener("click", (btn) => {
+          stateList = btn.target.innerText.toLowerCase();
+          document.querySelectorAll(".navigation__tabs").forEach((el) => {
+            el.classList.remove("active");
+          });
+          btn.target.classList.add("active");
+          updateList(stateList);
+        });
+      });
+
+      function clearAll() {
+        const todoListFilter = todoList.filter(
+          ({ type }) => type === "completed"
+        );
+        todoListFilter.forEach((e) => (e.type = "active"));
+        updateList(stateList);
+      }
+
+      const todoAddInput = document.getElementById("todo-add");
+      todoAddInput.addEventListener("keyup", (e) => {
+        if (e.keyCode === 13) {
+          if (e.target.value !== "") {
+            let maxVal = todoList.length + 1;
+            if (todoList.length !== 0) {
+              maxVal =
+                Math.max.apply(
+                  Math,
+                  todoList.map((data) => {
+                    return data.id;
+                  })
+                ) + 1;
+            }
+            todoList.push({
+              id: maxVal,
+              name: e.target.value,
+              type: "active",
+            });
+            updateList(stateList);
+            e.target.value = "";
+          }
+        }
+      });
+
+      function deleteListItem(el, elId) {
+        const todoListTemp = todoList.filter(({ id }) => id !== elId);
+        todoList = todoListTemp;
+        updateList(stateList);
+      }
+
+      function completeListItem(el, elId) {
+        const todoListTemp = todoList.find(({ id }) => id === elId);
+        if (todoListTemp.type === "active") {
+          todoListTemp.type = "completed";
+        } else {
+          todoListTemp.type = "active";
+        }
+        updateList(stateList);
+      }
+
+      function updateList(state) {
+        const list = document.getElementsByClassName("todo__list__wrapper")[0];
+        list.innerHTML = "";
+        if (todoList.length !== 0) {
+          document.querySelectorAll(".todo__clear--all").forEach((e) => {
+            e.style.display = "block";
+          });
+          document.getElementsByClassName(
+            "todo__list__empty"
+          )[0].style.display = "none";
+          let todoListFilter = todoList;
+          if (stateList !== "all")
+            todoListFilter = todoList.filter(({ type }) => type === stateList);
+          document.querySelectorAll(".todo__remaining").forEach((e) => {
+            e.style.display = "block";
+            const filterTemp = todoList.filter(({ type }) => type === "active");
+            e.children[0].innerText = filterTemp.length;
+          });
+          for (let i = todoListFilter.length - 1; i >= 0; i--) {
+            const id = todoListFilter[i].id;
+            const name = todoListFilter[i].name;
+            const type = todoListFilter[i].type;
+            const listItem = document.createElement("div");
+            listItem.classList.add("todo__list__item");
+            listItem.setAttribute("onclick", `completeListItem(this, ${id})`);
+            listItem.innerHTML = `
+          <input ${
+            type === "completed" ? "checked" : ""
+          } id="todo-list-check-${id}" type="checkbox" name="todo-list-check-${id}" class="todo__check"/>
           <label for="todo-list-check-${id}" class="todo__check--ds"></label>
           <p class="todo__text">${name}</p>
           <svg onclick="deleteListItem(this, ${id})" class="todo__clear" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
           `;
-          list.append(listItem)
+            list.append(listItem);
+          }
+        } else {
+          document.querySelectorAll(".todo__remaining").forEach((e) => {
+            e.style.display = "none";
+          });
+          document.querySelectorAll(".todo__clear--all").forEach((e) => {
+            e.style.display = "none";
+          });
+          document.getElementsByClassName(
+            "todo__list__empty"
+          )[0].style.display = "flex";
         }
-      } else {
-        document.querySelectorAll(".todo__remaining").forEach((e) => {
-          e.style.display = "none";
-        })
-        document.querySelectorAll(".todo__clear--all").forEach((e) => {
-          e.style.display = "none";
-        })
-        document.getElementsByClassName("todo__list__empty")[0].style.display = "flex"
       }
-    }
-
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
