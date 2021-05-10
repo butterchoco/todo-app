@@ -102,12 +102,12 @@
       const modeBtn = document.getElementById("hero-mode");
       modeBtn.addEventListener("click", (e) => {
         if (mode === "light") {
-          e.target.setAttribute("src", "images/icon-sun.svg");
+          e.target.setAttribute("src", "/static/images/icon-sun.svg");
           document.body.classList.remove("light");
           document.body.classList.add("dark");
           mode = "dark";
         } else {
-          e.target.setAttribute("src", "images/icon-moon.svg");
+          e.target.setAttribute("src", "/static/images/icon-moon.svg");
           document.body.classList.remove("dark");
           document.body.classList.add("light");
           mode = "light";
